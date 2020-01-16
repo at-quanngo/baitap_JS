@@ -1,5 +1,4 @@
-var products = [
-  {
+var products = [{
     id: '1',
     name: 'product 1',
     describe: 'describe 1',
@@ -67,7 +66,7 @@ var properties = ['id', 'img', 'name', 'describe', 'price'];
 function displayTable() {
   for (var i = 0; i < item.length; i++) {
     var product = item[i];
-    var row = document.createElement('li');  
+    var row = document.createElement('li');
     var image = document.createElement('div');
     var name = document.createElement('p');
     var describe = document.createElement('p');
@@ -77,7 +76,7 @@ function displayTable() {
     name.innerHTML = product[properties[2]];
     describe.innerHTML = product[properties[3]];
     price.innerHTML = product[properties[4]];
-    btnadd.innerHTML = ('<button id="'+product[properties[0]]+'" onclick="addCart('+product[properties[0]]+')" class="btn-primary">Add to cart</button>');
+    btnadd.innerHTML = ('<button id="' + product[properties[0]] + '" onclick="addCart(' + product[properties[0]] + ')" class="btn-primary">Add to cart</button>');
 
     row.appendChild(image);
     row.appendChild(name);
@@ -92,13 +91,14 @@ displayTable();
 
 var count = 0;
 var addToCart = [];
+
 function addCart(x) {
-  count += 1;
-  document.getElementById("count").innerHTML = count;
-  
-  addToCart.push(products[x-1]);
+  /*count += 1;
+  document.getElementById("count").innerHTML = count;*/
+
+  addToCart.push(products[x - 1]);
   localStorage.setItem('add-cart', JSON.stringify(addToCart));
-  var getAddCart= [];
+  var getAddCart = [];
   getAddCart = JSON.parse(localStorage.getItem('add-cart'));
 }
 
@@ -109,4 +109,3 @@ for (var i = 0; i < btnClick.length; i++) {
     event.target.setAttribute('disabled', 'disabled');
   });
 }
-
